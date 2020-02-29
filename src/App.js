@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
-import AutoComplete from './components/AutoComplete';
 import NamesResource from './resources/NamesResource';
+import Text from './components/Text';
+import CombinedProviders from './components/CombinedProviders';
 
 function App() {
   const [names, setNames] = useState([]);
@@ -27,19 +28,13 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <div style={{ width: '300px' }}>
-        <AutoComplete
-          options={names}
-          onChange={onChangeHandler}
-          loading={loading}
-          onInput={onInputHandler}
-          value={selectedCharacter}
-        />
+    <CombinedProviders>
+      <div className="App">
+        <Text as="h1" color="secondary" align="center">
+          Hello world
+        </Text>
       </div>
-
-      <p>Selected character: {selectedCharacter || 'Nobody selected ):'}</p>
-    </div>
+    </CombinedProviders>
   );
 }
 
